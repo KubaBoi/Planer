@@ -1,0 +1,50 @@
+<html>
+	<head><title>Planer</title>
+        <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="https://kubaboi.github.io/CheeseFramework/public/styles/style.css">
+        <link rel="stylesheet" href="https://kubaboi.github.io/CheeseFramework/public/styles/alertStyle.css">
+    	<link rel="stylesheet" href="https://kubaboi.github.io/CheeseFramework/mdConverter/mdStyle.css">
+        <link rel="stylesheet" href="https://kubaboi.github.io/CheeseFramework/mdConverter/codeStyles/general.css">
+		<link rel="stylesheet" href="https://kubaboi.github.io/CheeseFramework/mdConverter/codeStyles/python.css">
+		<link rel="stylesheet" href="https://kubaboi.github.io/CheeseFramework/mdConverter/codeStyles/json.css">
+	</head>
+
+	<body>
+        <img class="menuIcon" src="./images/menuIcon.png" onclick="openMenu()">
+        <div id="menuDir" class="menu">
+            <img class="addIcon" src="./images/add.png" onclick="createFile()">
+            <ul id="treeUl"></ul>
+        </div>
+
+		<div id="d" class="d">
+			<div id="md" class="main"></div>
+		</div>
+		<div id="contents" class="contents"></div>
+
+		<script src="https://kubaboi.github.io/CheeseFramework/public/scripts/time.js"></script>    
+        <script src="https://kubaboi.github.io/CheeseFramework/public/scripts/cookies.js"></script>    
+        <script src="https://kubaboi.github.io/CheeseFramework/public/scripts/communication.js"></script>         
+        <script src="https://kubaboi.github.io/CheeseFramework/public/scripts/elementManager.js"></script>   
+        <script src="https://kubaboi.github.io/CheeseFramework/public/scripts/tableBuilder.js"></script>
+        <script src="https://kubaboi.github.io/CheeseFramework/public/scripts/alerts.js"></script>
+        <script src="https://kubaboi.github.io/CheeseFramework/public/scripts/loadPage.js"></script>
+        <script src="https://kubaboi.github.io/CheeseFramework/public/scripts/stringFormater.js"></script>
+        <script src="https://kubaboi.github.io/CheeseFramework/public/scripts/clickManager.js"></script>
+
+		<script src="https://kubaboi.github.io/CheeseFramework/mdConverter/convertMd.js"></script>
+		<script src="https://kubaboi.github.io/CheeseFramework/mdConverter/getMd.js"></script>
+		<script src="https://kubaboi.github.io/CheeseFramework/mdConverter/emojis.js"></script>
+		<script src="https://kubaboi.github.io/CheeseFramework/mdConverter/documentFormater.js"></script>
+		<script src="https://kubaboi.github.io/CheeseFramework/mdConverter/codeFormater.js"></script>
+		<script src="https://kubaboi.github.io/CheeseFramework/mdConverter/codeFormaters/general.js"></script>
+		<script src="https://kubaboi.github.io/CheeseFramework/mdConverter/codeFormaters/python.js"></script>
+		<script src="https://kubaboi.github.io/CheeseFramework/mdConverter/codeFormaters/json.js"></script>
+		<script src="https://kubaboi.github.io/CheeseFramework/mdConverter/codeFormaters/sql.js"></script>
+
+        <script src="./scripts/menu.js"></script>
+        <script src="./scripts/file.js"></script>
+        <script src="./scripts/start.js"></script>
+    
+    </body>
+
+</html>

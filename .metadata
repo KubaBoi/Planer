@@ -1,0 +1,1 @@
+{"CONTROLLERS": {"HelloWorldController": {"FILE": "src/controllers/notesController", "METHODS": {"getAll": {"GET": "/getAll"}, "create": {"POST": "/create"}}, "CONTROLLER": "/notes"}}, "REPOSITORIES": {}, "TESTS": {}}
