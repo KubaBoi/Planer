@@ -6,7 +6,6 @@ import shutil
 
 from Cheese.cheeseController import CheeseController as cc
 from Cheese.resourceManager import ResMan
-from certifi import contents
 
 #@controller /notes;
 class HelloWorldController(cc):
