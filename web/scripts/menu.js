@@ -16,21 +16,40 @@ async function openMenu() {
 
             for (let i = 0; i < response.TREE.length; i++) {
                 var directory = response.TREE[i];
+                var dirName = directory.DIRECTORY.replaceAll("\\", "/");
                 
-                var subUl = ul;
+                var li = createElement("li", ul, directory.DIRECTORY);
                 
-                if (directory.DIRECTORY != "\\notes") {
-                    var li = createElement("li", ul, directory.DIRECTORY);
-                    subUl = createElement("ul", li);
-                } 
+                if (dirName != "/notes") {
+                    createElement("img", li, "", [
+                        {"name": "src", "value": "/images/close.png"},
+                        {"name": "width", "value": "15px"},
+                        {"name": "height", "value": "15px"},
+                        {"name": "onclick", "value": `remove("${dirName}")`}
+                    ]);
+                }
+                createElement("img", li, "", [
+                    {"name": "src", "value": "/images/add.png"},
+                    {"name": "width", "value": "15px"},
+                    {"name": "height", "value": "15px"},
+                    {"name": "onclick", "value": `create("${dirName}")`}
+                ]);
+                subUl = createElement("ul", li);
 
                 for (let o = 0; o < directory.FILES.length; o++) {
                     var file = directory.FILES[o];
                     
                     if (file == ".gitkeep") continue;
 
-                    createElement("li", subUl, file, [
-                        {"name": "ondblclick", "value": `showFile("${directory.DIRECTORY.replaceAll("\\", "/") + '/' + file}")`}
+                    var subLi = createElement("li", subUl, file, [
+                        {"name": "ondblclick", "value": `showFile("${dirName + '/' + file}")`}
+                    ]);
+
+                    createElement("img", subLi, "", [
+                        {"name": "src", "value": "/images/close.png"},
+                        {"name": "width", "value": "15px"},
+                        {"name": "height", "value": "15px"},
+                        {"name": "onclick", "value": `remove("${dirName + '/' + file}")`}
                     ]);
                 } 
             }
