@@ -15,5 +15,6 @@ if __name__ == "__main__":
 
     print(ResMan.path)
     print(ResMan.logs())
+    print(ResMan.joinPath(ResMan.logs(), f"log.html"))
 
     CheeseBurger.serveForever()
