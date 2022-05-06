@@ -2,9 +2,10 @@ var debug = true;
 
 var alertTime = 3000;
 
-var mdUrl = getCookie("mdUlr");
+var mdUrl = getCookie("mdUrl");
 if (mdUrl != "") {
     showFile(mdUrl);
 }
-
-openMenu();
+else {
+    openMenu();
+}

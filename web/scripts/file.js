@@ -1,15 +1,10 @@
 
 function showFile(file) {
+    setCookie("mdUrl", file, 360);
     getMd(file);
     var menuDir = document.getElementById("menuDir");
     menuDir.style.visibility = "hidden";
     menuOpened = false;
-
-    setCookie("mdUrl", file, 360);
-}
-
-async function createFile() {
-    var response = await callEndpoint("POST", "/notes/create");
 }
 
 var mdUrl = "";
