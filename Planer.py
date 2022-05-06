@@ -14,5 +14,6 @@ if __name__ == "__main__":
     CheeseBurger.init()
 
     print(ResMan.path)
+    print(ResMan.logs())
 
     CheeseBurger.serveForever()
