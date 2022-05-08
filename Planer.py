@@ -13,8 +13,4 @@ main file of Cheese Application
 if __name__ == "__main__":
     CheeseBurger.init()
 
-    print(ResMan.path)
-    print(ResMan.logs())
-    print(ResMan.joinPath(ResMan.logs(), f"log.html"))
-
     CheeseBurger.serveForever()
