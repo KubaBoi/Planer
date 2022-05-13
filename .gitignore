@@ -2,6 +2,7 @@
 /.metadata/
 logs/*.log
 logs/*.html
+
 adminSettings.json
 secrets.json
 secretPass

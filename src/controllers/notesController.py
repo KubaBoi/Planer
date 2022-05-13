@@ -14,15 +14,6 @@ class HelloWorldController(cc):
     #@get /getAll;
     @staticmethod
     def getAll(server, path, auth):
-        args = cc.getArgs(path)
-
-        if (not cc.validateJson([""])):
-            return cc.createResponse({"ERROR": "Wrong json structure"}, 400)
-
-        if (args["name"] != Settings.getName and
-            args["pass"] != Settings.getPass):
-            return cc.createResponse({"ERROR": "Unauthorized"}, 401)
-
         response = []
 
         for root, dirs, files in os.walk(os.path.join(ResMan.web(), "notes")):
