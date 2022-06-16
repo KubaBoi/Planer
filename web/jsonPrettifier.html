@@ -29,6 +29,7 @@
         var inp = document.getElementById("sourceInp");
         inp.value = jsn;
         chng(jsn);
+        formatInput();
 
         function chng(value) {
             setCookie("latestJson", value.replaceAll("\n", ""), 360);
