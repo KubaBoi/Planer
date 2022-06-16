@@ -1,13 +1,78 @@
 <html>
 	<head><title>Planer - Json</title>
         <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="https://kubaboi.github.io/CheeseFramework/public/styles/style.css">
+        <link rel="stylesheet" href="https://kubaboi.github.io/CheeseFramework/public/styles/alertStyle.css">
+    	<link rel="stylesheet" href="https://kubaboi.github.io/CheeseFramework/mdConverter/mdStyle.css">
+        <link rel="stylesheet" href="https://kubaboi.github.io/CheeseFramework/mdConverter/codeStyles/general.css">
         <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 	</head>
 
 	<body>
         <img class="menuIcon" src="./images/favicon.png" onclick="location.replace('./')">
+        <button class="editIcon" onclick="formatInput()">Format input</button>
 
-    
+        <hr><hr><hr><hr>
+        <div class="d">
+            <textarea id="sourceInp" class="sourceInput" columns="500" rows="500" onchange="chng(this.value)"></textarea>
+            <code id="outInp" class="sourceInput" style="padding-left: 20px;"></code>
+        </div>
     </body>
+
+    <script src="https://kubaboi.github.io/CheeseFramework/public/scripts/cookies.js"></script> 
+    <script src="https://kubaboi.github.io/CheeseFramework/mdConverter/replacer.js"></script>
+    <script src="https://kubaboi.github.io/CheeseFramework/mdConverter/codeFormaters/json.js"></script> 
+    <script src="https://kubaboi.github.io/CheeseFramework/mdConverter/codeFormaters/python.js"></script> 
+
+    <script>
+        var jsn = getCookie("latestJson");
+        var inp = document.getElementById("sourceInp");
+        inp.value = jsn;
+        chng(jsn);
+
+        function chng(value) {
+            setCookie("latestJson", value.replaceAll("\n", ""), 360);
+            let out = document.getElementById("outInp");
+            let inp = document.getElementById("sourceInp");
+            try {
+                json = JSON.parse(value);
+                str = JSON.stringify(json, undefined, 4);
+                fr = formatJson(str).replaceAll("\n", "<br>").replaceAll("    ", "&nbsp;&nbsp;&nbsp;&nbsp;");
+                out.innerHTML = fr;
+            }
+            catch(err) {
+                out.innerHTML = `<span style="color: red;">${err.message}</span>`;
+            }
+        }
+
+        function formatInput() {
+            json = JSON.parse(inp.value);
+            str = JSON.stringify(json, undefined, 4);
+            inp.value = str;
+        }
+
+        function syntaxHighlight(json) {
+            if (typeof json != 'string') {
+                json = JSON.stringify(json, undefined, 4);
+            }
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
+
+    </script>
 
 </html>

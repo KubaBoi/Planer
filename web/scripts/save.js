@@ -23,9 +23,9 @@ async function save() {
 
 document.addEventListener('keydown', e => {
     if (e.ctrlKey && e.key === 's') {
-      // Prevent the Save dialog to open
-      e.preventDefault();
-      // Place your code here
-      save();
+        // Prevent the Save dialog to open
+        e.preventDefault();
+        // Place your code here
+        save();
     }
-  });
+});
