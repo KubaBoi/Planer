@@ -25,6 +25,12 @@
     left: 40px;
 }
 
+.jsonIcon {
+    position: fixed;
+    top: 5px;
+    left: 75px;
+}
+
 .addIcon {
     position: absolute;
     top: 2px;
