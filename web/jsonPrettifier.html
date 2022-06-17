@@ -34,7 +34,10 @@
         function chng(value) {
             setCookie("latestJson", value.replaceAll("\n", ""), 360);
             let out = document.getElementById("outInp");
-            value = value.replaceAll("'", "\"");
+            value = value.replaceAll("'", '"');
+            value = value.replaceAll("None", "null");
+            value = value.replaceAll("True", "true");
+            value = value.replaceAll("False", "false");
             try {
                 json = JSON.parse(value);
                 str = JSON.stringify(json, undefined, 4);
@@ -42,15 +45,28 @@
                 out.innerHTML = fr;
             }
             catch(err) {
-                out.innerHTML = `<span style="color: red;">${err.message}</span>`;
+                arr = err.message.split(" ");
+                index = parseInt(arr[arr.length-1]);
+                value = replaceAt(value, index, `<span style="color: red;">${value.substring(index, index+1)}</span>`);
+                out.innerHTML = `<span style="color: red;">${err.message}</span><br><br><span>${value}</span>`;
             }
         }
 
         function formatInput() {
-            value = inp.value.replaceAll("'", "\"");
+            value = inp.value;
+            value = value.replaceAll("'", '"');
+            value = value.replaceAll("None", "null");
+            value = value.replaceAll("True", "true");
+            value = value.replaceAll("False", "false");
+            inp.value = value;
+
             json = JSON.parse(inp.value);
             str = JSON.stringify(json, undefined, 4);
             inp.value = str;
+        }
+
+        function replaceAt(value, index, replacement) {
+            return value.substring(0, index) + replacement + value.substring(index + replacement.length);
         }
 
         function syntaxHighlight(json) {
