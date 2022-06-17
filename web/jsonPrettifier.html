@@ -34,7 +34,7 @@
         function chng(value) {
             setCookie("latestJson", value.replaceAll("\n", ""), 360);
             let out = document.getElementById("outInp");
-            let inp = document.getElementById("sourceInp");
+            value = value.replaceAll("'", "\"");
             try {
                 json = JSON.parse(value);
                 str = JSON.stringify(json, undefined, 4);
@@ -47,6 +47,7 @@
         }
 
         function formatInput() {
+            value = inp.value.replaceAll("'", "\"");
             json = JSON.parse(inp.value);
             str = JSON.stringify(json, undefined, 4);
             inp.value = str;
