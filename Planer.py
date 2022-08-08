@@ -16,6 +16,7 @@ main file of Cheese Application
 if __name__ == "__main__":
     CheeseBurger.init()
 
+    i = 0
     while True:
         try:
             req = {
@@ -27,6 +28,8 @@ if __name__ == "__main__":
             requests.post(f"http://localhost/services/doYouKnowMe", json=req)
             break
         except:
+            i += 1
+            if (i >= 10): break
             time.sleep(1)
 
     CheeseBurger.serveForever()
