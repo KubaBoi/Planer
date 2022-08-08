@@ -25,6 +25,7 @@ if __name__ == "__main__":
                 "icon": "/images/icon256.png",
                 "color": "FF0000"
             }
+            print("Sending request to FrogieHub")
             requests.post(f"http://localhost/services/doYouKnowMe", json=req)
             break
         except:
